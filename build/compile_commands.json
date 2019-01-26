@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/build",
+  "command": "/usr/bin/clang  -I/Library/Frameworks/SDL.framework/Headers -I/usr/local/include/SDL2  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk   -F/Library/Frameworks  -std=gnu11 -o CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o   -c /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/src/main.c",
+  "file": "/Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/src/main.c"
+}
+]
