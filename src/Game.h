@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef Game_H
+#define Game_H
 //Compiler stufff
 #include <iostream>
 #include <cstdlib>
@@ -7,9 +7,10 @@
 #include <ctime>
 //SDL stuff
 #include <vector>
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_mixer.h"
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
 //Our stuff.
 #include "Object.h"
 #include "Player.h"
@@ -41,11 +42,11 @@ class Timer
     
     Timer()
 	{
-    //Initialize the variables
-    startTicks = 0;
-    pausedTicks = 0;
-    paused = false;
-    started = false;    
+		//Initialize the variables
+		startTicks = 0;
+		pausedTicks = 0;
+		paused = false;
+		started = false;    
 	}
 
     
@@ -140,6 +141,8 @@ class Timer
 class Game
 {
 private:
+	SDL_Renderer* sdlRenderer;
+	SDL_Window* sdlWindow;
 	SDL_Surface* screen;
 	SDL_Surface* cat1;
 	SDL_Surface* cat2;
@@ -189,7 +192,7 @@ public:
 	void play();
 	void startGame();
 	void updateMap();
-	bool gameOver();
+	bool GameOver();
 	void initialize(int level);
 	bool checkWin();
 	void checkInput();

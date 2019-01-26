@@ -3,10 +3,14 @@
 
 CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o
  /Users/markduncan/Documents/Sites/RenToast2/src/Bullet.h
+ /Users/markduncan/Documents/Sites/RenToast2/src/Dragon.cpp
  /Users/markduncan/Documents/Sites/RenToast2/src/Dragon.h
+ /Users/markduncan/Documents/Sites/RenToast2/src/Ducks.cpp
  /Users/markduncan/Documents/Sites/RenToast2/src/Ducks.h
  /Users/markduncan/Documents/Sites/RenToast2/src/Fireball.h
+ /Users/markduncan/Documents/Sites/RenToast2/src/Game.cpp
  /Users/markduncan/Documents/Sites/RenToast2/src/Game.h
+ /Users/markduncan/Documents/Sites/RenToast2/src/Kittens.cpp
  /Users/markduncan/Documents/Sites/RenToast2/src/Kittens.h
  /Users/markduncan/Documents/Sites/RenToast2/src/Object.h
  /Users/markduncan/Documents/Sites/RenToast2/src/Player.h
@@ -55,6 +59,7 @@ CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o
  /usr/local/include/SDL2/SDL_thread.h
  /usr/local/include/SDL2/SDL_timer.h
  /usr/local/include/SDL2/SDL_touch.h
+ /usr/local/include/SDL2/SDL_ttf.h
  /usr/local/include/SDL2/SDL_version.h
  /usr/local/include/SDL2/SDL_video.h
  /usr/local/include/SDL2/begin_code.h

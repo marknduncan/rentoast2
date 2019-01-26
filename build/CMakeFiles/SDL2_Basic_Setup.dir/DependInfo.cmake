@@ -1,16 +1,15 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
+  "CXX"
   )
 # The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/src/main.c" "/Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/build/CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o"
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/markduncan/Documents/Sites/RenToast2/src/main.cpp" "/Users/markduncan/Documents/Sites/RenToast2/build/CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o"
   )
-set(CMAKE_C_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/Library/Frameworks/SDL.framework/Headers"
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/SDL2"
   )
 

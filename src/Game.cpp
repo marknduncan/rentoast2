@@ -69,7 +69,8 @@ void Game::mainMenu()
 			applySurface(662, 660, select, screen);
 		}
 
-		SDL_Flip(screen);
+		// SDL_Flip(screen);
+		SDL_RenderPresent(sdlRenderer);
 		try
 		{
 		switch(choice)
@@ -155,18 +156,24 @@ void Game::instructions()
 
 void Game::play()
 {
-	    //Initialize all SDL subsystems
+	//Initialize all SDL subsystems
     SDL_Init( SDL_INIT_EVERYTHING );
     
     //Set up the screen
-    screen = SDL_SetVideoMode( 1024, 768, 32, SDL_SWSURFACE );
+    // screen = SDL_SetVideoMode( 1024, 768, 32, SDL_SWSURFACE );
     
 	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
     
-    
     //Set the window caption
-    SDL_WM_SetCaption( "RENEGADE TOAST and the DEATH-y DUCKS of DOOM.", NULL );
-    
+    // SDL_WM_SetCaption( "RENEGADE TOAST and the DEATH-y DUCKS of DOOM.", NULL );
+
+	sdlWindow = SDL_CreateWindow("RENEGADE TOAST and the DEATH-y DUCKS of DOOM.",
+                             SDL_WINDOWPOS_UNDEFINED,
+                             SDL_WINDOWPOS_UNDEFINED,
+                             0, 0,
+                             SDL_WINDOW_FULLSCREEN_DESKTOP);	SDL_Renderer *sdlRenderer;
+							 
+	SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, &sdlWindow, &sdlRenderer);
 
 	background = IMG_Load("background.png");
 	toast = IMG_Load("toast.png");
@@ -184,7 +191,7 @@ void Game::play()
 	select = IMG_Load("buttonSelect.png");
 	story = IMG_Load("storyScreenNoWeapons.png");
 	fireball = IMG_Load("shoot.png");
-	playAgain = IMG_Load("gameOver.png");
+	playAgain = IMG_Load("GameOver.png");
 	music = Mix_LoadMUS("guerilla-Shrak-1146.wav");
 	Quack = Mix_LoadWAV("duck-quack4.wav");
 	flare = Mix_LoadWAV("fireball.wav");
@@ -195,9 +202,8 @@ void Game::play()
 
 	applySurface(0, 0, background, screen);
 
-	SDL_Flip(screen);
-
-
+	// SDL_Flip(screen);
+	SDL_RenderPresent(sdlRenderer);
 
 
 	Mix_PlayMusic(music, -1);
@@ -264,7 +270,7 @@ void Game::startGame()
 			won = false;
  			lvl++;
 		}
-		if(!quit && gameOver() == false)
+		if(!quit && GameOver() == false)
 		{
 			quit = true;
 		}
@@ -277,14 +283,15 @@ void Game::startGame()
 	}
 }
 
-bool Game::gameOver()
+bool Game::GameOver()
 {
 	bool quit = false;
 	bool keepPlaying = true;
 	while(!quit)
 	{
 		applySurface(112, 10, playAgain, screen);
-		SDL_Flip(screen);
+		// SDL_Flip(screen);
+		SDL_RenderPresent(sdlRenderer);
 		
 		if(SDL_PollEvent(&Done))
 		{
@@ -320,40 +327,40 @@ void Game::updateMap()
 		}
 		catch(const char* m)
 		{
-			if(m == "DEADDUCK")
+			if(strncmp(m,"DEADDUCK",8) == 0)
 			{
 				Mix_PlayChannel(-1, Quack, 0);
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
 			}
-			else if(m == "DEADDRAGON")
+			else if(strncmp(m,"DEADDRAGON",10) == 0)
 			{
 				Mix_PlayChannel(-1, roar, 0);
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
 			}
-			else if(m == "DEADCAT")
+			else if(strncmp(m,"DEADCAT",7) == 0)
 			{
 				Mix_PlayChannel(-1, meow, 0);
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
 			}
-			else if(m == "DEAD")
+			else if(strncmp(m,"DEAD",4) == 0)
 			{
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
 			}
-			else if(m == "FIRE")
+			else if(strncmp(m,"FIRE",4) == 0)
 			{
 				Mix_PlayChannel(-1, flare, 0);
 				Fireball* f = new Fireball(stuff[i]->x, stuff[i]->y+1);
 				stuff.push_back(f);
 			}
-			else if(m == "KILL")
+			else if(strncmp(m,"KILL",4) == 0)
 			{
 				lives--;
 			}
-			else if(m == "QUACK")
+			else if(strncmp(m,"QUACK",5) == 0)
 			{
 				Mix_PlayChannel(-1, Quack, 0);
 			}
@@ -387,7 +394,8 @@ void Game::drawScreen()
 			}
 		}
 	}
-	SDL_Flip(screen);
+	// SDL_Flip(screen);
+	SDL_RenderPresent(sdlRenderer);
 }
 
 void Game::startMenu()
@@ -425,7 +433,8 @@ void Game::startMenu()
 		{
 			throw "ALLDONE";
 		}
-		SDL_Flip(screen);
+		// SDL_Flip(screen);
+		SDL_RenderPresent(sdlRenderer);
 		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
 	}
 }

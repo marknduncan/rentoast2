@@ -1,22 +1,22 @@
 //Main
 #include <iostream>
 #include "SDL.h"
-#include "Game.h"
+#include "Game.cpp"
 #include "Object.h"
 #include "Player.h"
-#include "Ducks.h"
-#include "Kittens.h"
-#include "Dragon.h"
+#include "Ducks.cpp"
+#include "Kittens.cpp"
+#include "Dragon.cpp"
 #include <vector>
 
 using namespace std;
 
 int main( int argc, char* args[] )
 {
-	Game centipede;
+	Game rentoast;
 	try
 	{
-	centipede.play();
+	rentoast.play();
 	}
 	catch(...)
 	{

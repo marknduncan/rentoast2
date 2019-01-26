@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.13.3/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master
+CMAKE_SOURCE_DIR = /Users/markduncan/Documents/Sites/RenToast2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/build
+CMAKE_BINARY_DIR = /Users/markduncan/Documents/Sites/RenToast2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/build/CMakeFiles /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/markduncan/Documents/Sites/RenToast2/build/CMakeFiles /Users/markduncan/Documents/Sites/RenToast2/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/markduncan/Documents/Sites/RenToast2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,32 @@ SDL2_Basic_Setup/fast:
 	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/build
 .PHONY : SDL2_Basic_Setup/fast
 
-src/main.o: src/main.c.o
+src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-src/main.i: src/main.c.i
+src/main.i: src/main.cpp.i
 
 .PHONY : src/main.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.i
-.PHONY : src/main.c.i
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-src/main.s: src/main.c.s
+src/main.s: src/main.cpp.s
 
 .PHONY : src/main.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.s
-.PHONY : src/main.c.s
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
