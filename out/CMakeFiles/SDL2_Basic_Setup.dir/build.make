@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.13.3/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master
+CMAKE_SOURCE_DIR = /Users/markduncan/Documents/Sites/RenToast2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out
+CMAKE_BINARY_DIR = /Users/markduncan/Documents/Sites/RenToast2/out
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SDL2_Basic_Setup.dir/depend.make
@@ -57,27 +57,27 @@ include CMakeFiles/SDL2_Basic_Setup.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/SDL2_Basic_Setup.dir/flags.make
 
-CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o: CMakeFiles/SDL2_Basic_Setup.dir/flags.make
-CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o   -c /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/src/main.c
+CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o: CMakeFiles/SDL2_Basic_Setup.dir/flags.make
+CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/markduncan/Documents/Sites/RenToast2/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o -c /Users/markduncan/Documents/Sites/RenToast2/src/main.cpp
 
-CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/src/main.c > CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.i
+CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/markduncan/Documents/Sites/RenToast2/src/main.cpp > CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.i
 
-CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/src/main.c -o CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.s
+CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/markduncan/Documents/Sites/RenToast2/src/main.cpp -o CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.s
 
 # Object files for target SDL2_Basic_Setup
 SDL2_Basic_Setup_OBJECTS = \
-"CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o"
+"CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o"
 
 # External object files for target SDL2_Basic_Setup
 SDL2_Basic_Setup_EXTERNAL_OBJECTS =
 
-bin/SDL2_Basic_Setup: CMakeFiles/SDL2_Basic_Setup.dir/src/main.c.o
+bin/SDL2_Basic_Setup: CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o
 bin/SDL2_Basic_Setup: CMakeFiles/SDL2_Basic_Setup.dir/build.make
 bin/SDL2_Basic_Setup: /usr/local/lib/libSDL2main.a
 bin/SDL2_Basic_Setup: /usr/local/lib/libSDL2.dylib
@@ -86,7 +86,7 @@ bin/SDL2_Basic_Setup: /usr/local/lib/libSDL2_ttf.dylib
 bin/SDL2_Basic_Setup: /usr/local/lib/libSDL2_image.dylib
 bin/SDL2_Basic_Setup: /usr/local/lib/libSDL2_mixer.dylib
 bin/SDL2_Basic_Setup: CMakeFiles/SDL2_Basic_Setup.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable bin/SDL2_Basic_Setup"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/markduncan/Documents/Sites/RenToast2/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/SDL2_Basic_Setup"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL2_Basic_Setup.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -99,6 +99,6 @@ CMakeFiles/SDL2_Basic_Setup.dir/clean:
 .PHONY : CMakeFiles/SDL2_Basic_Setup.dir/clean
 
 CMakeFiles/SDL2_Basic_Setup.dir/depend:
-	cd /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out /Users/markduncan/Documents/Downloads/SDL2_Basic_Setup-master/out/CMakeFiles/SDL2_Basic_Setup.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/markduncan/Documents/Sites/RenToast2/out && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/markduncan/Documents/Sites/RenToast2 /Users/markduncan/Documents/Sites/RenToast2 /Users/markduncan/Documents/Sites/RenToast2/out /Users/markduncan/Documents/Sites/RenToast2/out /Users/markduncan/Documents/Sites/RenToast2/out/CMakeFiles/SDL2_Basic_Setup.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SDL2_Basic_Setup.dir/depend
 
