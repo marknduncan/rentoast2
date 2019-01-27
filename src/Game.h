@@ -142,25 +142,26 @@ class Game
 {
 private:
 	SDL_Renderer* sdlRenderer;
-	SDL_Window* sdlWindow;
-	SDL_Surface* screen;
-	SDL_Surface* cat1;
-	SDL_Surface* cat2;
-	SDL_Surface* cat3;
-	SDL_Surface* cat4;
-	SDL_Surface* toast;
-	SDL_Surface* bullet;
-	SDL_Surface* mama;
-	SDL_Surface* baby;
-	SDL_Surface* dragon;
-	SDL_Surface* fireball;
-	SDL_Surface* logo;
-	SDL_Surface* background;
-	SDL_Surface* start;
-	SDL_Surface* end;
-	SDL_Surface* story;
-	SDL_Surface* select;
-	SDL_Surface* playAgain;
+	SDL_Window* screen;
+	// SDL_Surface* screen;
+	// SDL_Surface* cat1;
+	// SDL_Surface* cat2;
+	// SDL_Surface* cat3;
+	// SDL_Surface* cat4;
+	// SDL_Surface* toast;
+	// SDL_Surface* bullet;
+	// SDL_Surface* mama;
+	// SDL_Surface* baby;
+	// SDL_Surface* dragon;
+	// SDL_Surface* fireball;
+	// SDL_Surface* logo;
+	SDL_Surface* backgroundSurface;
+	SDL_Texture* backgroundTexture;
+	// SDL_Surface* start;
+	// SDL_Surface* end;
+	// SDL_Surface* story;
+	// SDL_Surface* select;
+	// SDL_Surface* playAgain;
 	SDL_Event Done;
 	Timer fps;
 
@@ -198,7 +199,7 @@ public:
 	void checkInput();
 	void drawScreen();
 	SDL_Surface* load_image(string);
-	void applySurface(int, int, SDL_Surface*, SDL_Surface*);
+	void applySurface(int, int, SDL_Surface*, SDL_Window*,SDL_Texture*);
 	void fire();
 	void pause();
 	bool checkPress();
