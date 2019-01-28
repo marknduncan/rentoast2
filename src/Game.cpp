@@ -29,39 +29,41 @@ void Game::mainMenu()
 
 	while(!quit)
 	{
+		applySurface(0,0,backgroundSurface,sdlScreen);
 		applySurface(112, 10, logoSurface, sdlScreen);
 		applySurface(112, 660, startSurface, sdlScreen);
 		applySurface(662, 660, endSurface, sdlScreen);
 
 		if(SDL_PollEvent(&Done))
 		{
-				if(Done.type == SDL_KEYDOWN)
+			if(Done.type == SDL_KEYDOWN)
+			{
+				switch( Done.key.keysym.sym )
 				{
-					switch( Done.key.keysym.sym )
-					{
-						case SDLK_LEFT: selection++; 
-							if(selection > 1)
-							{
-								selection = 0;
-							}
-							break;
-						case SDLK_RIGHT: selection--; 
-							if(selection < 0)
-							{
-								selection = 1;
-							}
-							break;
-						case SDLK_ESCAPE: choice = 2; break;
-						case SDLK_SPACE: choice = selection + 1; break;
-						default: break;
-					}
+					case SDLK_LEFT: selection++; 
+						if(selection > 1)
+						{
+							selection = 0;
+						}
+						break;
+					case SDLK_RIGHT: selection--; 
+						if(selection < 0)
+						{
+							selection = 1;
+						}
+						break;
+					case SDLK_ESCAPE: choice = 2; break;
+					case SDLK_SPACE: choice = selection + 1; break;
+					default: break;
+				}
 					
-				}
-				else if (Done.type == SDL_QUIT)
-				{
-					quit = true;
-				}
 			}
+			else if (Done.type == SDL_QUIT)
+			{
+				quit = true;
+			}
+		}
+
 		if(selection == 0)
 		{
 			applySurface(112, 660, selectSurface, sdlScreen);
@@ -72,7 +74,6 @@ void Game::mainMenu()
 		}
 
 		SDL_RenderPresent(sdlRenderer);
-		SDL_Delay(10); //might not need this...
 
 		try
 		{
@@ -226,11 +227,10 @@ void Game::play()
 
 	applySurface(0, 0, backgroundSurface, sdlScreen);
 	
-	//If there is no music playing 
+	//If there is no music playing, play the music
 	if( Mix_PlayingMusic() == 0 )
 	{
 		Mix_PlayMusic( music, -1 );	 
-		// printf("Mix_PlayMusic: %s\n", Mix_GetError());
 	}
 
 	mainMenu();
@@ -311,7 +311,6 @@ bool Game::GameOver()
 	{
 		applySurface(112, 10, playAgainSurface, sdlScreen);
 		SDL_RenderPresent(sdlRenderer);
-		SDL_Delay(10); //might not need this...		
 
 		if(SDL_PollEvent(&Done))
 		{
@@ -414,9 +413,7 @@ void Game::drawScreen()
 			}
 		}
 	}
-	// SDL_Flip(screen);
 	SDL_RenderPresent(sdlRenderer);
-	SDL_Delay(10); //might not need this...
 }
 
 void Game::startMenu()
@@ -454,9 +451,9 @@ void Game::startMenu()
 		{
 			throw "ALLDONE";
 		}
+
 		SDL_RenderPresent(sdlRenderer);
-		SDL_Delay(10); //might not need this...
-		
+
 		SDL_FillRect( sdlScreen, &sdlScreen->clip_rect, SDL_MapRGB( sdlScreen->format, 0xFF, 0xFF, 0xFF ) );
 	}
 }
