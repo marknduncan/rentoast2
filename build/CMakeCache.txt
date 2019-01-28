@@ -17,7 +17,8 @@
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//No help, variable specified on the command line.
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=Debug
 
 //Enable/Disable color output during build.
@@ -383,7 +384,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_SDL2_IMAGE:INTERNAL=[/usr/local/lib/libSDL2_image.d
 SDL2Mixer_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SDL2Mixer_LIBRARY
 SDL2Mixer_LIBRARY-ADVANCED:INTERNAL=1
-SDL2TTF_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;-framework Cocoa;-framework Cocoa
+SDL2TTF_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
 SDL2_IMAGE_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_image.dylib
-SDL2_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
 

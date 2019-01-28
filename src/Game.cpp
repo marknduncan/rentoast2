@@ -17,7 +17,7 @@ Game::Game()
 
 Game::~Game()
 {
-	//cleanUp();
+	cleanUp();
 }
 // void Game::mainMenu()
 // {
@@ -167,17 +167,48 @@ void Game::play()
     //Set the window caption
     // SDL_WM_SetCaption( "RENEGADE TOAST and the DEATH-y DUCKS of DOOM.", NULL );
 							 
-	SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, &screen, &sdlRenderer);
+	SDL_CreateWindowAndRenderer(1024, 768, SDL_WINDOW_SHOWN, &sdlWindow, &sdlRenderer);
+	//  SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3 );
+    //     SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1 );
+    //     SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
 
-	backgroundSurface = IMG_Load("background.png");
+	// sdlWindow = SDL_CreateWindow("RENEGADE TOAST and the DEATH-y DUCKS of DOOM.",
+    //                       	 SDL_WINDOWPOS_UNDEFINED,
+    //                          SDL_WINDOWPOS_UNDEFINED,
+    //                          0, 0,
+    //                          SDL_WINDOW_FULLSCREEN_DESKTOP);
+
+	// sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, 0);
+	SDL_PumpEvents();
+	SDL_SetWindowSize(sdlWindow, 1024, 768);
+
+	backgroundSurface = IMG_Load("/resources/background.png");
 	backgroundTexture = SDL_CreateTextureFromSurface(sdlRenderer, backgroundSurface);
+	SDL_FreeSurface(backgroundSurface);
 
-	SDL_UpdateTexture(backgroundTexture, NULL, backgroundSurface->pixels, backgroundSurface->pitch);
-	SDL_RenderClear(sdlRenderer);
-	SDL_RenderCopy(sdlRenderer, backgroundTexture, NULL, NULL);
+	// Blank out the renderer with all black
+    SDL_SetRenderDrawColor(sdlRenderer, 0, 0, 0, 0);
+    SDL_RenderClear(sdlRenderer);
+
+    // Note that all rendercopys are order specific.
+
+    // Render the sample texture. We could use a source and/or destination rect to render to
+    // but for now we'll just use it as a background
+    SDL_RenderCopy(sdlRenderer, backgroundTexture, NULL, NULL);
+
+	// SDL_UpdateTexture(backgroundTexture, NULL, screen->pixels, screen->pitch);
+	// SDL_RenderClear(sdlRenderer);
+	// SDL_RenderCopy(sdlRenderer, backgroundTexture, NULL, NULL);
+	SDL_RenderPresent(sdlRenderer);
+
+	// Give us time to see the window.
+	SDL_Delay(10);
+
+	// Always be sure to clean up
+	SDL_Quit();
+	exit(0);
 
 	//replace with textures like above
-
 
 	// toast = IMG_Load("toast.png");
 	// cat1 = IMG_Load("cat1.png");
@@ -214,12 +245,12 @@ void Game::play()
 
 	//Mix_PlayMusic(music, -1);
 
-	try{
-	//mainMenu();
-	}
-	catch(...)
-	{
-	}
+	// try{
+	// //mainMenu();
+	// }
+	// catch(...)
+	// {
+	// }
 
 }
 
@@ -579,24 +610,27 @@ void Game::play()
 // 	}
 // }
 
-// void Game::cleanUp()
-// {
-// 	SDL_FreeSurface(screen);
-// 	SDL_FreeSurface(toast);
-// 	SDL_FreeSurface(bullet);
-// 	SDL_FreeSurface(dragon);
-// 	SDL_FreeSurface(mama);
-// 	SDL_FreeSurface(baby);
-// 	SDL_FreeSurface(cat1);
-// 	SDL_FreeSurface(cat2);
-// 	SDL_FreeSurface(cat3);
-// 	SDL_FreeSurface(cat4);
-// 	SDL_FreeSurface(story);
-// 	SDL_FreeSurface(start);
-// 	SDL_FreeSurface(end);
-// 	SDL_FreeSurface(fireball);
-// 	SDL_FreeSurface(logo);
-// 	SDL_FreeSurface(background);
-// 	SDL_FreeSurface(select);
-// 	SDL_FreeSurface(playAgain);
-// }
+void Game::cleanUp()
+{
+	SDL_DestroyTexture(backgroundTexture);
+    SDL_DestroyRenderer(sdlRenderer);
+    SDL_DestroyWindow(sdlWindow);
+	// SDL_FreeSurface(screen);
+	// SDL_FreeSurface(toast);
+	// SDL_FreeSurface(bullet);
+	// SDL_FreeSurface(dragon);
+	// SDL_FreeSurface(mama);
+	// SDL_FreeSurface(baby);
+	// SDL_FreeSurface(cat1);
+	// SDL_FreeSurface(cat2);
+	// SDL_FreeSurface(cat3);
+	// SDL_FreeSurface(cat4);
+	// SDL_FreeSurface(story);
+	// SDL_FreeSurface(start);
+	// SDL_FreeSurface(end);
+	// SDL_FreeSurface(fireball);
+	// SDL_FreeSurface(logo);
+	// SDL_FreeSurface(background);
+	// SDL_FreeSurface(select);
+	// SDL_FreeSurface(playAgain);
+}

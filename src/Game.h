@@ -142,7 +142,8 @@ class Game
 {
 private:
 	SDL_Renderer* sdlRenderer;
-	SDL_Window* screen;
+	// SDL_Surface* screen;
+	SDL_Window* sdlWindow;
 	// SDL_Surface* screen;
 	// SDL_Surface* cat1;
 	// SDL_Surface* cat2;
