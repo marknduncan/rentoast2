@@ -159,54 +159,39 @@ void Game::play()
 	//Initialize all SDL subsystems
     SDL_Init( SDL_INIT_EVERYTHING );
     
-    //Set up the screen
-    // screen = SDL_SetVideoMode( 1024, 768, 32, SDL_SWSURFACE );
-    
+	//Set up the audio
 	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
     
-    //Set the window caption
-    // SDL_WM_SetCaption( "RENEGADE TOAST and the DEATH-y DUCKS of DOOM.", NULL );
-							 
+	//Set up the screen    
 	SDL_CreateWindowAndRenderer(1024, 768, SDL_WINDOW_SHOWN, &sdlWindow, &sdlRenderer);
-	//  SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3 );
-    //     SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1 );
-    //     SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
 
-	// sdlWindow = SDL_CreateWindow("RENEGADE TOAST and the DEATH-y DUCKS of DOOM.",
-    //                       	 SDL_WINDOWPOS_UNDEFINED,
-    //                          SDL_WINDOWPOS_UNDEFINED,
-    //                          0, 0,
-    //                          SDL_WINDOW_FULLSCREEN_DESKTOP);
+	//Set the window caption		 
+    SDL_SetWindowTitle(sdlWindow, "RENEGADE TOAST and the DUCKS of DEATH-Y DOOM.");
 
-	// sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, 0);
+	//Set the app icon
+	SDL_Surface *iconSurface;
+  	iconSurface = IMG_Load("resources/toast.png");
+ 	SDL_SetWindowIcon(sdlWindow, iconSurface);
+ 	SDL_FreeSurface(iconSurface);//free the surface
+
+	//Necessary to fix a bug with the SDL2 rendering
 	SDL_PumpEvents();
 	SDL_SetWindowSize(sdlWindow, 1024, 768);
 
+	//Set the game background
 	backgroundSurface = IMG_Load("/resources/background.png");
 	backgroundTexture = SDL_CreateTextureFromSurface(sdlRenderer, backgroundSurface);
-	SDL_FreeSurface(backgroundSurface);
+	SDL_FreeSurface(backgroundSurface); //free surface
 
 	// Blank out the renderer with all black
     SDL_SetRenderDrawColor(sdlRenderer, 0, 0, 0, 0);
     SDL_RenderClear(sdlRenderer);
-
-    // Note that all rendercopys are order specific.
-
-    // Render the sample texture. We could use a source and/or destination rect to render to
-    // but for now we'll just use it as a background
+	//Copy background to the renderer
     SDL_RenderCopy(sdlRenderer, backgroundTexture, NULL, NULL);
-
-	// SDL_UpdateTexture(backgroundTexture, NULL, screen->pixels, screen->pitch);
-	// SDL_RenderClear(sdlRenderer);
-	// SDL_RenderCopy(sdlRenderer, backgroundTexture, NULL, NULL);
 	SDL_RenderPresent(sdlRenderer);
 
 	// Give us time to see the window.
 	SDL_Delay(10);
-
-	// Always be sure to clean up
-	SDL_Quit();
-	exit(0);
 
 	//replace with textures like above
 
@@ -226,7 +211,8 @@ void Game::play()
 	// story = IMG_Load("storyScreenNoWeapons.png");
 	// fireball = IMG_Load("shoot.png");
 	// playAgain = IMG_Load("GameOver.png");
-	// music = Mix_LoadMUS("guerilla-Shrak-1146.wav");
+	 music = Mix_LoadMUS("/resources/guerilla-Shrak-1146.wav");
+
 	// Quack = Mix_LoadWAV("duck-quack4.wav");
 	// flare = Mix_LoadWAV("fireball.wav");
 	// roar = Mix_LoadWAV("creature_snarl2.wav");
@@ -236,14 +222,11 @@ void Game::play()
 
 	// applySurface(0, 0, backgroundSurface, screen);
 
-
-
-
-	// // SDL_Flip(screen);
-	// SDL_RenderPresent(sdlRenderer);
-
-
-	//Mix_PlayMusic(music, -1);
+	//If there is no music playing
+	if( Mix_PlayingMusic() == 0 )
+	{
+		Mix_PlayMusic( music, -1 );	  
+	}
 
 	// try{
 	// //mainMenu();
@@ -615,6 +598,20 @@ void Game::cleanUp()
 	SDL_DestroyTexture(backgroundTexture);
     SDL_DestroyRenderer(sdlRenderer);
     SDL_DestroyWindow(sdlWindow);
+
+	// When we exit the loop clean up and exit SDL
+	// Audio
+	if (Mix_PlayingMusic()) {
+		Mix_HaltMusic();
+	}
+
+	Mix_FreeMusic(music);
+	Mix_CloseAudio();
+
+	// Always be sure to clean up
+	SDL_Quit();
+	exit(0);
+
 	// SDL_FreeSurface(screen);
 	// SDL_FreeSurface(toast);
 	// SDL_FreeSurface(bullet);
