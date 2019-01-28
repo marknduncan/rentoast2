@@ -1,7 +1,7 @@
 [
 {
   "directory": "/Users/markduncan/Documents/Sites/RenToast2/build",
-  "command": "/usr/bin/clang++   -I/usr/local/include/SDL2  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk   -o CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o -c /Users/markduncan/Documents/Sites/RenToast2/src/main.cpp",
+  "command": "/usr/bin/clang++   -I/usr/local/include/SDL2  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk   -o CMakeFiles/SDL2_RenToast.dir/src/main.cpp.o -c /Users/markduncan/Documents/Sites/RenToast2/src/main.cpp",
   "file": "/Users/markduncan/Documents/Sites/RenToast2/src/main.cpp"
 }
 ]

@@ -139,7 +139,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=SDL2_Basic_Setup
+CMAKE_PROJECT_NAME:STATIC=SDL2_RenToast
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -235,6 +235,12 @@ SDL2_INCLUDE_DIR:PATH=/usr/local/include/SDL2
 
 //Where the SDL2 Library can be found
 SDL2_LIBRARY:STRING=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa
+
+//Value Computed by CMake
+SDL2_RenToast_BINARY_DIR:STATIC=/Users/markduncan/Documents/Sites/RenToast2/build
+
+//Value Computed by CMake
+SDL2_RenToast_SOURCE_DIR:STATIC=/Users/markduncan/Documents/Sites/RenToast2
 
 
 ########################
@@ -384,7 +390,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_SDL2_IMAGE:INTERNAL=[/usr/local/lib/libSDL2_image.d
 SDL2Mixer_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SDL2Mixer_LIBRARY
 SDL2Mixer_LIBRARY-ADVANCED:INTERNAL=1
-SDL2TTF_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
+SDL2TTF_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;/usr/local/lib/libSDL2_ttf.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
 SDL2_IMAGE_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_image.dylib
-SDL2_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa;-framework Cocoa
 

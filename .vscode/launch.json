@@ -7,7 +7,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/build/bin/SDL2_Basic_Setup",
+            "program": "${workspaceRoot}/build/bin/SDL2_RenToast",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",

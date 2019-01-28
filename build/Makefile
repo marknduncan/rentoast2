@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SDL2_Basic_Setup
+# Target rules for targets named SDL2_RenToast
 
 # Build rule for target.
-SDL2_Basic_Setup: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SDL2_Basic_Setup
-.PHONY : SDL2_Basic_Setup
+SDL2_RenToast: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SDL2_RenToast
+.PHONY : SDL2_RenToast
 
 # fast build rule for target.
-SDL2_Basic_Setup/fast:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/build
-.PHONY : SDL2_Basic_Setup/fast
+SDL2_RenToast/fast:
+	$(MAKE) -f CMakeFiles/SDL2_RenToast.dir/build.make CMakeFiles/SDL2_RenToast.dir/build
+.PHONY : SDL2_RenToast/fast
 
 src/main.o: src/main.cpp.o
 
@@ -129,7 +129,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/SDL2_RenToast.dir/build.make CMakeFiles/SDL2_RenToast.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -138,7 +138,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/SDL2_RenToast.dir/build.make CMakeFiles/SDL2_RenToast.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -147,7 +147,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/SDL2_Basic_Setup.dir/build.make CMakeFiles/SDL2_Basic_Setup.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/SDL2_RenToast.dir/build.make CMakeFiles/SDL2_RenToast.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -158,7 +158,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... SDL2_Basic_Setup"
+	@echo "... SDL2_RenToast"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
