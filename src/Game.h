@@ -142,27 +142,61 @@ class Game
 {
 private:
 	SDL_Renderer* sdlRenderer;
-	// SDL_Surface* screen;
 	SDL_Window* sdlWindow;
-	// SDL_Surface* screen;
-	// SDL_Surface* cat1;
-	// SDL_Surface* cat2;
-	// SDL_Surface* cat3;
-	// SDL_Surface* cat4;
-	// SDL_Surface* toast;
-	// SDL_Surface* bullet;
-	// SDL_Surface* mama;
-	// SDL_Surface* baby;
-	// SDL_Surface* dragon;
-	// SDL_Surface* fireball;
-	// SDL_Surface* logo;
+	SDL_Texture* sdlTexture;
+	SDL_Surface* sdlScreen;
+
+	SDL_Surface* cat1Surface;
+	SDL_Texture* cat1Texture;
+
+	SDL_Surface* cat2Surface;
+	SDL_Texture* cat2Texture;
+
+	SDL_Surface* cat3Surface;
+	SDL_Texture* cat3Texture;
+
+	SDL_Surface* cat4Surface;
+	SDL_Texture* cat4Texture;
+
+	SDL_Surface* toastSurface;
+	SDL_Texture* toastTexture;
+
+	SDL_Surface* bulletSurface;
+	SDL_Texture* bulletTexture;
+
+	SDL_Surface* mamaSurface;
+	SDL_Texture* mamaTexture;
+
+	SDL_Surface* babySurface;
+	SDL_Texture* babyTexture;
+
+	SDL_Surface* dragonSurface;
+	SDL_Texture* dragonTexture;
+
+	SDL_Surface* fireballSurface;
+	SDL_Texture* fireballTexture;
+
+	SDL_Surface* logoSurface;
+	SDL_Texture* logoTexture;
+
 	SDL_Surface* backgroundSurface;
 	SDL_Texture* backgroundTexture;
-	// SDL_Surface* start;
-	// SDL_Surface* end;
-	// SDL_Surface* story;
-	// SDL_Surface* select;
-	// SDL_Surface* playAgain;
+
+	SDL_Surface* startSurface;
+	SDL_Texture* startTexture;
+
+	SDL_Surface* endSurface;
+	SDL_Texture* endTexture;
+
+	SDL_Surface* storySurface;
+	SDL_Texture* storyTexture;
+
+	SDL_Surface* selectSurface;
+	SDL_Texture* selectTexture;
+
+	SDL_Surface* playAgainSurface;
+	SDL_Texture* playAgainTexture;
+
 	SDL_Event Done;
 	Timer fps;
 
@@ -177,7 +211,6 @@ private:
 	int kittenMap[19][25];
 	vector<Object*> stuff;
 	int lives;
-
 
 public:
 	Game();
@@ -200,7 +233,7 @@ public:
 	void checkInput();
 	void drawScreen();
 	SDL_Surface* load_image(string);
-	void applySurface(int, int, SDL_Surface*, SDL_Window*,SDL_Texture*);
+	void applySurface(int x, int y, SDL_Surface* sdlSurface,SDL_Surface* sdlScreen);
 	void fire();
 	void pause();
 	bool checkPress();
