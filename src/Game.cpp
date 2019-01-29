@@ -29,7 +29,7 @@ void Game::mainMenu()
 
 	while(!quit)
 	{
-		applySurface(0,0,backgroundSurface,sdlScreen);
+		applySurface(0,0,backgroundSurfaces[0],sdlScreen);
 		applySurface(112, 10, logoSurface, sdlScreen);
 		applySurface(112, 660, startSurface, sdlScreen);
 		applySurface(662, 660, endSurface, sdlScreen);
@@ -199,12 +199,18 @@ void Game::play()
     SDL_RenderClear(sdlRenderer);
 
 	//replace with textures like above
-	backgroundSurface = IMG_Load("resources/background.png");
+
+	//load backgrounds
+	backgroundSurfaces[0] = IMG_Load("resources/background.png");
+	backgroundSurfaces[1] = IMG_Load("resources/background_2.jpg");
+	backgroundSurfaces[2] = IMG_Load("resources/background_3.jpg");
+	backgroundSurfaces[3] = IMG_Load("resources/background_4.jpg");
+
 	toastSurface = IMG_Load("resources/toast.png");
 	cat1Surface = IMG_Load("resources/cat1.png");
-	cat2Surface = IMG_Load("resources/cat2.png");
-	cat3Surface = IMG_Load("resources/cat3.png");
-	cat4Surface = IMG_Load("resources/cat4.png");
+	// cat2Surface = IMG_Load("resources/cat2.png");
+	// cat3Surface = IMG_Load("resources/cat3.png");
+	// cat4Surface = IMG_Load("resources/cat4.png");
 	mamaSurface = IMG_Load("resources/mama.png");
 	babySurface = IMG_Load("resources/baby.png");
 	dragonSurface = IMG_Load("resources/dragon.png");
@@ -251,14 +257,19 @@ void Game::startGame()
 		won = false;
 		lvl = 1;
 		lives = 3;
+		
 		while(alive)
 		{
 			initialize(lvl);
+			loadBackgroundSurface();
+
+
 			while(!won)
 			{
 				fps.start();
+
 				try{
-				checkInput();
+					checkInput();
 				}
 				catch(const char*)
 				{
@@ -267,6 +278,7 @@ void Game::startGame()
 					alive = false;
 					leaveGame = true;
 				}
+
 				updateMap();
 
 				SDL_FillRect( sdlScreen, &sdlScreen->clip_rect, SDL_MapRGB( sdlScreen->format, 0xFF, 0xFF, 0xFF ) );
@@ -276,25 +288,26 @@ void Game::startGame()
 				{
 					won = true;
 				}
+
 				if(lives == 0)
 				{
 					alive = false;
 					won = true;
 				}
+
 				if( fps.get_ticks() < 20)
 				{
-                SDL_Delay( ( 20 ) - fps.get_ticks() );
+                	SDL_Delay( ( 20 ) - fps.get_ticks() );
                 }
 			}
 			won = false;
  			lvl++;
 		}
+
 		if(!quit && GameOver() == false)
 		{
 			quit = true;
 		}
-		
-
 	}
 	if(leaveGame)
 	{
@@ -391,7 +404,7 @@ void Game::updateMap()
 void Game::drawScreen()
 {
 	
-	applySurface(0,0, backgroundSurface, sdlScreen);
+	applySurface(0,0,currentBackground,sdlScreen);
 	for(int y = 0; y < 19; y++)
 	{
 		for(int x = 0; x < 25; x++)
@@ -403,9 +416,9 @@ void Game::drawScreen()
 			case MAMA: applySurface(x * 40, y * 40, mamaSurface, sdlScreen); break;
 			case BABY: applySurface(x * 40, y * 40, babySurface, sdlScreen); break;
 			case KITTEN1: applySurface(x * 40, y * 40, cat1Surface, sdlScreen); break;
-			case KITTEN2: applySurface(x * 40, y * 40, cat2Surface, sdlScreen); break;
-			case KITTEN3: applySurface(x * 40, y * 40, cat3Surface, sdlScreen); break;
-			case KITTEN4: applySurface(x * 40, y * 40, cat4Surface, sdlScreen); break;
+			// case KITTEN2: applySurface(x * 40, y * 40, cat2Surface, sdlScreen); break;
+			// case KITTEN3: applySurface(x * 40, y * 40, cat3Surface, sdlScreen); break;
+			// case KITTEN4: applySurface(x * 40, y * 40, cat4Surface, sdlScreen); break;
 			case DRAGON: applySurface(x * 40, y * 40, dragonSurface, sdlScreen); break;
 			case FIREBALL: applySurface(x * 40, y * 40, fireballSurface, sdlScreen); break;
 			default:  break;//do nothing
@@ -415,13 +428,19 @@ void Game::drawScreen()
 	SDL_RenderPresent(sdlRenderer);
 }
 
+//loads a random background to the currentBackground surface
+void Game::loadBackgroundSurface(){
+	int RandIndex = rand() % 4; //generates a random number between 0 and 3
+	currentBackground = backgroundSurfaces[RandIndex];
+}
+
 void Game::startMenu()
 {
 	bool quit = false;
 	int choice = 0;
 	while(!quit)
 	{
-		applySurface(0,0, backgroundSurface, sdlScreen);
+		applySurface(0,0,backgroundSurfaces[0],sdlScreen);
 		applySurface(112, 10, storySurface, sdlScreen);
 
 		try
@@ -623,7 +642,11 @@ void Game::cleanUp()
 	SDL_FreeSurface(endSurface);
 	SDL_FreeSurface(fireballSurface);
 	SDL_FreeSurface(logoSurface);
-	SDL_FreeSurface(backgroundSurface);
+
+	for(SDL_Surface* backgroundSurface : backgroundSurfaces){
+		SDL_FreeSurface(backgroundSurface);
+	}
+
 	SDL_FreeSurface(selectSurface);
 	SDL_FreeSurface(playAgainSurface);
 

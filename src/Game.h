@@ -144,6 +144,8 @@ private:
 	SDL_Renderer* sdlRenderer;
 	SDL_Window* sdlWindow;
 	SDL_Texture* sdlTexture;
+	
+	SDL_Surface* currentBackground;
 
 	SDL_Surface* sdlScreen;
 
@@ -169,8 +171,6 @@ private:
 
 	SDL_Surface* logoSurface;
 
-	SDL_Surface* backgroundSurface;
-
 	SDL_Surface* startSurface;
 
 	SDL_Surface* endSurface;
@@ -194,6 +194,7 @@ private:
 	int** drawMap;
 	int kittenMap[19][25];
 	vector<Object*> stuff;
+	SDL_Surface* backgroundSurfaces[4];
 	int lives;
 
 public:
@@ -209,6 +210,7 @@ public:
 	void toggleSFX();
 	void instructions();
 	void play();
+	void loadBackgroundSurface();
 	void startGame();
 	void updateMap();
 	bool GameOver();
@@ -216,7 +218,6 @@ public:
 	bool checkWin();
 	void checkInput();
 	void drawScreen();
-	// SDL_Surface* load_image(string);
 	void applySurface(int x, int y, SDL_Surface* sdlSurface,SDL_Surface* sdlScreen);
 	void fire();
 	void pause();

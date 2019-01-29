@@ -42,17 +42,17 @@ void Kittens::update(int** &map)
 	if(HP == 3)
 	{
 		map[(int)y][(int)x] = EMPTY;
-		map[(int)y][(int)x] = KITTEN2;
+		map[(int)y][(int)x] = KITTEN1;
 	}
 	if(HP == 2)
 	{
 		map[(int)y][(int)x] = EMPTY;
-		map[(int)y][(int)x] = KITTEN3;
+		map[(int)y][(int)x] = KITTEN1;
 	}
 	if(HP == 1)
 	{
 		map[(int)y][(int)x] = EMPTY;
-		map[(int)y][(int)x] = KITTEN4;
+		map[(int)y][(int)x] = KITTEN1;
 	}
 
 
