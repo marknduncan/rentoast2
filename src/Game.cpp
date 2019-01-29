@@ -225,7 +225,6 @@ void Game::play()
 	laser = Mix_LoadWAV("resources/Laser_ca-Intermed-563.wav");
 	meow = Mix_LoadWAV("resources/angry6.wav");
 
-	applySurface(0, 0, backgroundSurface, sdlScreen);
 	
 	//If there is no music playing, play the music
 	if( Mix_PlayingMusic() == 0 )
