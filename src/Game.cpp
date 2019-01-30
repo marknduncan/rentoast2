@@ -263,6 +263,7 @@ void Game::startGame()
 	lives = 3;
 	score = 0; //initialize score
 	activeWeapon = "LASER";
+	weaponSurface = bulletSurface;
 
 	while(!quit)
 	{
@@ -522,6 +523,9 @@ void Game::checkInput()
 					case SDLK_ESCAPE: 
 						pause();
 						break;
+					case SDLK_RETURN: 
+						pause();
+						break;
 					case SDLK_SPACE: 
 						fire();
 						break;
@@ -703,22 +707,30 @@ void Game::cleanUp()
 	}
 
 	Mix_FreeMusic(music);
+
+	Mix_FreeChunk(ow);
+	Mix_FreeChunk(flare);
+	Mix_FreeChunk(roar);
+	Mix_FreeChunk(laser);
+	Mix_FreeChunk(meow);
+
 	Mix_CloseAudio();
 
-  	SDL_FreeSurface(textSurface);
   	TTF_CloseFont(_arcadeFont);
 
+  	SDL_FreeSurface(textSurface);
 	SDL_FreeSurface(sdlScreen);
 	SDL_FreeSurface(toastSurface);
 	SDL_FreeSurface(bulletSurface);
-	SDL_FreeSurface(weaponSurface);
+	// SDL_FreeSurface(weaponSurface);
+	SDL_FreeSurface(rocketSurface);
 	SDL_FreeSurface(dragonSurface);
 	SDL_FreeSurface(mamaSurface);
 	SDL_FreeSurface(babySurface);
 	SDL_FreeSurface(cat1Surface);
-	SDL_FreeSurface(cat2Surface);
-	SDL_FreeSurface(cat3Surface);
-	SDL_FreeSurface(cat4Surface);
+	// SDL_FreeSurface(cat2Surface);
+	// SDL_FreeSurface(cat3Surface);
+	// SDL_FreeSurface(cat4Surface);
 	SDL_FreeSurface(storySurface);
 	SDL_FreeSurface(startSurface);
 	SDL_FreeSurface(endSurface);
