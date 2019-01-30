@@ -146,6 +146,7 @@ private:
 	SDL_Texture* sdlTexture;
 	
 	SDL_Surface* currentBackground;
+	SDL_Surface* titleBackground;
 
 	SDL_Surface* sdlScreen;
 

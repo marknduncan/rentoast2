@@ -30,7 +30,7 @@ void Game::mainMenu()
 
 	while(!quit)
 	{
-		applySurface(0,0,backgroundSurfaces[0],sdlScreen);
+		applySurface(0,0,titleBackground,sdlScreen);
 		applySurface(112, 10, logoSurface, sdlScreen);
 		applySurface(112, 660, startSurface, sdlScreen);
 		applySurface(662, 660, endSurface, sdlScreen);
@@ -205,10 +205,10 @@ void Game::play()
 	_arcadeFont = TTF_OpenFont("resources/ARCADECLASSIC.TTF", 24); //18PT SIZE
 
 	//load backgrounds
-	backgroundSurfaces[0] = IMG_Load("resources/background.png");
-	backgroundSurfaces[1] = IMG_Load("resources/background_2.jpg");
-	backgroundSurfaces[2] = IMG_Load("resources/background_3.jpg");
-	backgroundSurfaces[3] = IMG_Load("resources/background_4.jpg");
+	titleBackground = IMG_Load("resources/background.png");
+	backgroundSurfaces[0] = IMG_Load("resources/background_2.jpg");
+	backgroundSurfaces[1] = IMG_Load("resources/background_3.jpg");
+	backgroundSurfaces[2] = IMG_Load("resources/background_4.jpg");
 
 	toastSurface = IMG_Load("resources/toast.png");
 	cat1Surface = IMG_Load("resources/cat1.png");
@@ -227,12 +227,12 @@ void Game::play()
 	fireballSurface = IMG_Load("resources/shoot.png");
 	playAgainSurface = IMG_Load("resources/GameOver.png");
 
-	music = Mix_LoadMUS("resources/guerilla-Shrak-1146.wav");
+	music = Mix_LoadMUS("resources/Battle-of-the-Ancients.wav");
 
 	Quack = Mix_LoadWAV("resources/duck-quack4.wav");
 	flare = Mix_LoadWAV("resources/fireball.wav");
 	roar = Mix_LoadWAV("resources/creature_snarl2.wav");
-	laser = Mix_LoadWAV("resources/Laser_ca-Intermed-563.wav");
+	laser = Mix_LoadWAV("resources/LASRFIR2.wav");
 	meow = Mix_LoadWAV("resources/angry6.wav");
 
 	
@@ -240,7 +240,10 @@ void Game::play()
 	if( Mix_PlayingMusic() == 0 )
 	{
 		Mix_PlayMusic( music, -1 );	 
+		Mix_VolumeMusic(MIX_MAX_VOLUME/1.5);
 	}
+
+	Mix_Volume(-1,MIX_MAX_VOLUME/3);
 
 	mainMenu();
 
@@ -441,7 +444,7 @@ void Game::drawScreen(int lvl)
 
 //loads a random background to the currentBackground surface
 void Game::loadBackgroundSurface(){
-	int RandIndex = rand() % 4; //generates a random number between 0 and 3
+	int RandIndex = rand() % 3; //generates a random number between 0 and 2
 	currentBackground = backgroundSurfaces[RandIndex];
 }
 
@@ -451,7 +454,7 @@ void Game::startMenu()
 	int choice = 0;
 	while(!quit)
 	{
-		applySurface(0,0,backgroundSurfaces[0],sdlScreen);
+		applySurface(0,0,titleBackground,sdlScreen);
 		applySurface(112, 10, storySurface, sdlScreen);
 
 		try
