@@ -40,9 +40,6 @@ public:
 
 		map[(int)y][(int)x] = BULLET;
 
-
-		
-
 	}
 	virtual void hitAction()
 	{
