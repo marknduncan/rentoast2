@@ -160,7 +160,11 @@ private:
 
 	SDL_Surface* toastSurface;
 
+	SDL_Surface* toastLivesSurface;
+
 	SDL_Surface* bulletSurface;
+
+	SDL_Surface* rocketSurface;
 
 	SDL_Surface* mamaSurface;
 
@@ -169,6 +173,8 @@ private:
 	SDL_Surface* dragonSurface;
 
 	SDL_Surface* fireballSurface;
+
+	SDL_Surface* weaponSurface;
 
 	SDL_Surface* logoSurface;
 
@@ -189,12 +195,15 @@ private:
 	SDL_Event Done;
 	Timer fps;
 
+	char* activeWeapon;
+
 	Mix_Music* music;
 	Mix_Chunk* Quack;
 	Mix_Chunk* flare;
 	Mix_Chunk* roar;
 	Mix_Chunk* laser;
 	Mix_Chunk* meow;
+	Mix_Chunk* ow;
 	
 	int** drawMap;
 	int kittenMap[19][25];
@@ -226,11 +235,13 @@ public:
 	void drawScreen(int);
 	void applySurface(int x, int y, SDL_Surface* sdlSurface,SDL_Surface* sdlScreen);
 	void fire();
+	void toggleWeapon();
 	void pause();
 	bool checkPress();
 	void cleanUp();
 	void printLevel(int);
 	void printScore();
+	void printLives();
 
 };
 #endif

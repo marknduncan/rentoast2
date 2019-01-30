@@ -184,7 +184,7 @@ void Game::play()
                                             1024, 768);
 
 	//Set the window caption		 
-    SDL_SetWindowTitle(sdlWindow, "RENEGADE TOAST and the DUCKS of DEATH-Y DOOM.");
+    SDL_SetWindowTitle(sdlWindow, "RENEGADE TOAST and the DEATH-Y DUCKS of DOOM 2");
 	
 	//Set the app icon
 	SDL_Surface *iconSurface;
@@ -211,6 +211,7 @@ void Game::play()
 	backgroundSurfaces[2] = IMG_Load("resources/background_4.jpg");
 
 	toastSurface = IMG_Load("resources/toast.png");
+	toastLivesSurface = IMG_Load("resources/toast_lives.png");
 	cat1Surface = IMG_Load("resources/cat1.png");
 	// cat2Surface = IMG_Load("resources/cat2.png");
 	// cat3Surface = IMG_Load("resources/cat3.png");
@@ -219,6 +220,8 @@ void Game::play()
 	babySurface = IMG_Load("resources/baby.png");
 	dragonSurface = IMG_Load("resources/dragon.png");
 	bulletSurface = IMG_Load("resources/bullet.png");
+	rocketSurface = IMG_Load("resources/rocket.png");
+
 	logoSurface = IMG_Load("resources/rentoast2_logo.png");
 	startSurface = IMG_Load("resources/buttonStart.png");
 	endSurface = IMG_Load("resources/buttonQuit.png");
@@ -234,6 +237,7 @@ void Game::play()
 	roar = Mix_LoadWAV("resources/creature_snarl2.wav");
 	laser = Mix_LoadWAV("resources/LASRFIR2.wav");
 	meow = Mix_LoadWAV("resources/angry6.wav");
+	ow = Mix_LoadWAV("resources/ow2.wav");
 
 	
 	//If there is no music playing, play the music
@@ -258,6 +262,7 @@ void Game::startGame()
 	bool won = false;
 	lives = 3;
 	score = 0; //initialize score
+	activeWeapon = "LASER";
 
 	while(!quit)
 	{
@@ -309,6 +314,7 @@ void Game::startGame()
 			}
 			won = false;
  			lvl++;
+			lives++;
 		}
 
 		if(!quit && GameOver() == false)
@@ -400,6 +406,7 @@ void Game::updateMap()
 			else if(strncmp(m,"KILL",4) == 0)
 			{
 				lives--;
+				Mix_PlayChannel(-1, ow, 0);
 			}
 			else if(strncmp(m,"QUACK",5) == 0)
 			{
@@ -418,6 +425,7 @@ void Game::drawScreen(int lvl)
 	applySurface(0,0,currentBackground,sdlScreen);
 	printLevel(lvl);
 	printScore();
+	printLives();
 
 	for(int y = 0; y < 19; y++)
 	{
@@ -426,7 +434,7 @@ void Game::drawScreen(int lvl)
 			switch(drawMap[y][x])
 			{
 				case PLAYER: applySurface(x * 40, y * 40, toastSurface, sdlScreen); break;
-				case BULLET: applySurface(x * 40, y * 40, bulletSurface, sdlScreen); break;
+				case BULLET: applySurface(x * 40, y * 40, weaponSurface, sdlScreen); break;
 				case MAMA: applySurface(x * 40, y * 40, mamaSurface, sdlScreen); break;
 				case BABY: applySurface(x * 40, y * 40, babySurface, sdlScreen); break;
 				case KITTEN1: applySurface(x * 40, y * 40, cat1Surface, sdlScreen); break;
@@ -517,6 +525,12 @@ void Game::checkInput()
 					case SDLK_SPACE: 
 						fire();
 						break;
+					case SDLK_z:
+						toggleWeapon();
+						break;
+					case SDLK_x:
+						toggleWeapon();
+						break;
 					default: break;
 				}
 				
@@ -539,6 +553,20 @@ void Game::printScore(){
   	textSurface = TTF_RenderText_Blended(_arcadeFont, scoreString, white);
 
 	applySurface(900,725,textSurface,sdlScreen);
+}
+
+void Game::printLives(){
+
+	SDL_Color white = {255, 255, 255};
+	char livesString[32];
+
+	sprintf(livesString, "%d", lives);
+
+  	textSurface = TTF_RenderText_Blended(_arcadeFont, livesString, white);
+
+	applySurface(900,700,textSurface,sdlScreen);
+	applySurface(875,700,toastLivesSurface,sdlScreen);
+
 }
 
 void Game::printLevel(int level){
@@ -627,6 +655,17 @@ void Game::fire()
 	stuff.push_back(p);
 }
 
+void Game::toggleWeapon(){
+	if(strncmp(activeWeapon,"LASER",5) == 0 ){
+		weaponSurface = rocketSurface;
+		activeWeapon = "ROCKET";
+	}
+	else{
+		weaponSurface = bulletSurface;
+		activeWeapon = "LASER";
+	}
+}
+
 void Game::pause()
 {
 	bool quit = false;
@@ -672,6 +711,7 @@ void Game::cleanUp()
 	SDL_FreeSurface(sdlScreen);
 	SDL_FreeSurface(toastSurface);
 	SDL_FreeSurface(bulletSurface);
+	SDL_FreeSurface(weaponSurface);
 	SDL_FreeSurface(dragonSurface);
 	SDL_FreeSurface(mamaSurface);
 	SDL_FreeSurface(babySurface);
