@@ -401,6 +401,7 @@ void Game::updateMap()
 			else if(strncmp(m,"QUACK",5) == 0)
 			{
 				Mix_PlayChannel(-1, Quack, 0);
+				score += 50;
 			}
 			
 		}
