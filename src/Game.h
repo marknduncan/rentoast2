@@ -229,7 +229,7 @@ public:
 	bool checkPress();
 	void cleanUp();
 	void printLevel(int);
-	void printScore(int);
+	void printScore();
 
 };
 #endif

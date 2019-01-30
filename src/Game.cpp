@@ -254,7 +254,8 @@ void Game::startGame()
 	int lvl = 1;
 	bool won = false;
 	lives = 3;
-	
+	score = 0; //initialize score
+
 	while(!quit)
 	{
 		alive = true;
@@ -366,20 +367,23 @@ void Game::updateMap()
 				Mix_PlayChannel(-1, Quack, 0);
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
+				score += 500;
 			}
 			else if(strncmp(m,"DEADDRAGON",10) == 0)
 			{
 				Mix_PlayChannel(-1, roar, 0);
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
+				score += 1000;
 			}
 			else if(strncmp(m,"DEADCAT",7) == 0)
 			{
 				Mix_PlayChannel(-1, meow, 0);
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
+				score += 100;
 			}
-			else if(strncmp(m,"DEAD",4) == 0)
+			else if(strncmp(m,"DEAD",4) == 0) //fireball
 			{
 				delete stuff[i];
 				stuff.erase(stuff.begin() + i);//Kill what you're dealing with.
@@ -409,6 +413,7 @@ void Game::drawScreen(int lvl)
 	
 	applySurface(0,0,currentBackground,sdlScreen);
 	printLevel(lvl);
+	printScore();
 
 	for(int y = 0; y < 19; y++)
 	{
@@ -416,17 +421,17 @@ void Game::drawScreen(int lvl)
 		{
 			switch(drawMap[y][x])
 			{
-			case PLAYER: applySurface(x * 40, y * 40, toastSurface, sdlScreen); break;
-			case BULLET: applySurface(x * 40, y * 40, bulletSurface, sdlScreen); break;
-			case MAMA: applySurface(x * 40, y * 40, mamaSurface, sdlScreen); break;
-			case BABY: applySurface(x * 40, y * 40, babySurface, sdlScreen); break;
-			case KITTEN1: applySurface(x * 40, y * 40, cat1Surface, sdlScreen); break;
-			// case KITTEN2: applySurface(x * 40, y * 40, cat2Surface, sdlScreen); break;
-			// case KITTEN3: applySurface(x * 40, y * 40, cat3Surface, sdlScreen); break;
-			// case KITTEN4: applySurface(x * 40, y * 40, cat4Surface, sdlScreen); break;
-			case DRAGON: applySurface(x * 40, y * 40, dragonSurface, sdlScreen); break;
-			case FIREBALL: applySurface(x * 40, y * 40, fireballSurface, sdlScreen); break;
-			default:  break;//do nothing
+				case PLAYER: applySurface(x * 40, y * 40, toastSurface, sdlScreen); break;
+				case BULLET: applySurface(x * 40, y * 40, bulletSurface, sdlScreen); break;
+				case MAMA: applySurface(x * 40, y * 40, mamaSurface, sdlScreen); break;
+				case BABY: applySurface(x * 40, y * 40, babySurface, sdlScreen); break;
+				case KITTEN1: applySurface(x * 40, y * 40, cat1Surface, sdlScreen); break;
+				// case KITTEN2: applySurface(x * 40, y * 40, cat2Surface, sdlScreen); break;
+				// case KITTEN3: applySurface(x * 40, y * 40, cat3Surface, sdlScreen); break;
+				// case KITTEN4: applySurface(x * 40, y * 40, cat4Surface, sdlScreen); break;
+				case DRAGON: applySurface(x * 40, y * 40, dragonSurface, sdlScreen); break;
+				case FIREBALL: applySurface(x * 40, y * 40, fireballSurface, sdlScreen); break;
+				default:  break;//do nothing
 			}
 		}
 	}
@@ -520,12 +525,20 @@ void Game::checkInput()
 			
 }
 
-void Game::printScore(int score){
+void Game::printScore(){
 
+	SDL_Color white = {255, 255, 255};
+	char scoreString[32];
 
+	sprintf(scoreString, "%d", score);
+
+  	textSurface = TTF_RenderText_Blended(_arcadeFont, scoreString, white);
+
+	applySurface(900,725,textSurface,sdlScreen);
 }
 
 void Game::printLevel(int level){
+
 	SDL_Color white = {255, 255, 255};
 	char levelString[32];
 	char finalLevelString[64] = "Level ";

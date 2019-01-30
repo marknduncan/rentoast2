@@ -14,9 +14,10 @@ using namespace std;
 int main( int argc, char* args[] )
 {
 	Game rentoast;
+	
 	try
 	{
-	rentoast.play();
+		rentoast.play();
 	}
 	catch(...)
 	{
