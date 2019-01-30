@@ -181,6 +181,10 @@ private:
 
 	SDL_Surface* playAgainSurface;
 
+	SDL_Surface* textSurface;
+
+	TTF_Font* _arcadeFont;
+
 	SDL_Event Done;
 	Timer fps;
 
@@ -196,6 +200,7 @@ private:
 	vector<Object*> stuff;
 	SDL_Surface* backgroundSurfaces[4];
 	int lives;
+	int score;
 
 public:
 	Game();
@@ -217,12 +222,14 @@ public:
 	void initialize(int level);
 	bool checkWin();
 	void checkInput();
-	void drawScreen();
+	void drawScreen(int);
 	void applySurface(int x, int y, SDL_Surface* sdlSurface,SDL_Surface* sdlScreen);
 	void fire();
 	void pause();
 	bool checkPress();
 	void cleanUp();
+	void printLevel(int);
+	void printScore(int);
 
 };
 #endif

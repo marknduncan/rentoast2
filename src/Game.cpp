@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <stdlib.h>
 #include "Game.h"
 #include "Object.h"
 #include "SDL_image.h"
@@ -163,7 +164,8 @@ void Game::play()
 {
 	//Initialize all SDL subsystems
     SDL_Init( SDL_INIT_EVERYTHING );
-    
+	TTF_Init();
+
 	//Set up the audio
 	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
     
@@ -199,6 +201,8 @@ void Game::play()
     SDL_RenderClear(sdlRenderer);
 
 	//replace with textures like above
+
+	_arcadeFont = TTF_OpenFont("resources/ARCADECLASSIC.TTF", 24); //18PT SIZE
 
 	//load backgrounds
 	backgroundSurfaces[0] = IMG_Load("resources/background.png");
@@ -263,7 +267,6 @@ void Game::startGame()
 			initialize(lvl);
 			loadBackgroundSurface();
 
-
 			while(!won)
 			{
 				fps.start();
@@ -282,7 +285,7 @@ void Game::startGame()
 				updateMap();
 
 				SDL_FillRect( sdlScreen, &sdlScreen->clip_rect, SDL_MapRGB( sdlScreen->format, 0xFF, 0xFF, 0xFF ) );
-				drawScreen();
+				drawScreen(lvl);
 
 				if(checkWin() == true)
 				{
@@ -401,10 +404,12 @@ void Game::updateMap()
 }
 
 
-void Game::drawScreen()
+void Game::drawScreen(int lvl)
 {
 	
 	applySurface(0,0,currentBackground,sdlScreen);
+	printLevel(lvl);
+
 	for(int y = 0; y < 19; y++)
 	{
 		for(int x = 0; x < 25; x++)
@@ -515,6 +520,24 @@ void Game::checkInput()
 			
 }
 
+void Game::printScore(int score){
+
+
+}
+
+void Game::printLevel(int level){
+	SDL_Color white = {255, 255, 255};
+	char levelString[32];
+	char finalLevelString[64] = "Level ";
+
+	sprintf(levelString, "%d", level);
+	strcat(finalLevelString,levelString);
+
+  	textSurface = TTF_RenderText_Blended(_arcadeFont, finalLevelString, white);
+
+	applySurface(20,725,textSurface,sdlScreen);
+}
+
 bool Game::checkWin()
 {
 	bool won = true;
@@ -617,7 +640,6 @@ void Game::cleanUp()
 {
 	SDL_DestroyTexture(sdlTexture);
     SDL_DestroyRenderer(sdlRenderer);
-    SDL_DestroyWindow(sdlWindow);
 
 	// When we exit the loop clean up and exit Audio
 	if (Mix_PlayingMusic()) {
@@ -626,6 +648,9 @@ void Game::cleanUp()
 
 	Mix_FreeMusic(music);
 	Mix_CloseAudio();
+
+  	SDL_FreeSurface(textSurface);
+  	TTF_CloseFont(_arcadeFont);
 
 	SDL_FreeSurface(sdlScreen);
 	SDL_FreeSurface(toastSurface);
@@ -649,7 +674,9 @@ void Game::cleanUp()
 
 	SDL_FreeSurface(selectSurface);
 	SDL_FreeSurface(playAgainSurface);
-
+ 
+    SDL_DestroyWindow(sdlWindow);
+ 	TTF_Quit();
 	// Always be sure to clean up
 	SDL_Quit();
 	exit(0);
