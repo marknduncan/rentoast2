@@ -219,11 +219,11 @@ void Game::play()
 	babySurface = IMG_Load("resources/baby.png");
 	dragonSurface = IMG_Load("resources/dragon.png");
 	bulletSurface = IMG_Load("resources/bullet.png");
-	logoSurface = IMG_Load("resources/logo.png");
+	logoSurface = IMG_Load("resources/rentoast2_logo.png");
 	startSurface = IMG_Load("resources/buttonStart.png");
 	endSurface = IMG_Load("resources/buttonQuit.png");
 	selectSurface = IMG_Load("resources/buttonSelect.png");
-	storySurface = IMG_Load("resources/storyScreenNoWeapons.png");
+	storySurface = IMG_Load("resources/storyScreen2.png");
 	fireballSurface = IMG_Load("resources/shoot.png");
 	playAgainSurface = IMG_Load("resources/GameOver.png");
 
