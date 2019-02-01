@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdlib.h>
+#include <fstream>
 #include "Game.h"
 #include "Object.h"
 #include "SDL_image.h"
@@ -169,8 +170,19 @@ void Game::play()
 	//Set up the audio
 	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
     
-	//Set up the screen    
 	SDL_CreateWindowAndRenderer(1024, 768, SDL_WINDOW_SHOWN, &sdlWindow, &sdlRenderer);
+	// sdlWindow = SDL_CreateWindow(
+	// 		"RENEGADE TOAST and the DEATH-Y DUCKS of DOOM 2",                  // window title
+	// 		SDL_WINDOWPOS_UNDEFINED,           // initial x position
+	// 		SDL_WINDOWPOS_UNDEFINED,           // initial y position
+	// 		1024,                               // width, in pixels
+	// 		768,                               // height, in pixels
+	// 		SDL_WINDOW_OPENGL                  // flags - see below
+	// 	);
+
+	// //Set up the screen    
+	// sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED );
+
 
 	sdlScreen = SDL_CreateRGBSurface(0, 1024, 768, 32,
                                         0x00FF0000,
@@ -183,8 +195,7 @@ void Game::play()
                                             SDL_TEXTUREACCESS_STREAMING,
                                             1024, 768);
 
-	//Set the window caption		 
-    SDL_SetWindowTitle(sdlWindow, "RENEGADE TOAST and the DEATH-Y DUCKS of DOOM 2");
+	SDL_SetWindowTitle(sdlWindow, "RENEGADE TOAST and the DEATH-Y DUCKS of DOOM 2");
 	
 	//Set the app icon
 	SDL_Surface *iconSurface;
@@ -203,6 +214,7 @@ void Game::play()
 	//replace with textures like above
 
 	_arcadeFont = TTF_OpenFont("resources/ARCADECLASSIC.TTF", 24); //18PT SIZE
+	_arcadeFontLarge = TTF_OpenFont("resources/ARCADECLASSIC.TTF", 50); //18PT SIZE
 
 	//load backgrounds
 	titleBackground = IMG_Load("resources/background.png");
@@ -289,7 +301,7 @@ void Game::startGame()
 					won = true;
 					quit = true;
 					alive = false;
-					leaveGame = true;
+					leaveGame = true; 
 				}
 
 				updateMap();
@@ -308,9 +320,9 @@ void Game::startGame()
 					won = true;
 				}
 
-				if( fps.get_ticks() < 20)
+				if( fps.get_ticks() < 40)
 				{
-                	SDL_Delay( ( 20 ) - fps.get_ticks() );
+                	SDL_Delay( ( 40 ) - fps.get_ticks() );
                 }
 			}
 			won = false;
@@ -333,8 +345,33 @@ bool Game::GameOver()
 {
 	bool quit = false;
 	bool keepPlaying = true;
+
+	int sum = 0;
+    int x;
+    ifstream inFile;
+
+	//read high score file
+	inFile.open("highscore.txt");
+
+    while (inFile >> x) {
+        sum = sum + x;
+    }
+
+    inFile.close();
+
+	if(sum < score){
+		//write out the current score to a text file for high score
+		std::ofstream ofs ("highscore.txt", std::ofstream::out);
+		ofs << score;
+		ofs.close();
+	}
+	else{
+		score = sum;
+	}
+
 	while(!quit)
 	{
+		printHighScore();
 		applySurface(112, 10, playAgainSurface, sdlScreen);
 		SDL_RenderPresent(sdlRenderer);
 
@@ -571,6 +608,20 @@ void Game::printLives(){
 	applySurface(900,700,textSurface,sdlScreen);
 	applySurface(875,700,toastLivesSurface,sdlScreen);
 
+}
+
+void Game::printHighScore(){
+
+	SDL_Color white = {255, 255, 255};
+	char scoreString[32];
+	char finalScoreString[64] = "High  Score ";
+
+	sprintf(scoreString, "%d", score);
+	strcat(finalScoreString,scoreString);
+
+  	textSurface = TTF_RenderText_Blended(_arcadeFontLarge, finalScoreString, white);
+
+	applySurface(315,650,textSurface,sdlScreen);
 }
 
 void Game::printLevel(int level){

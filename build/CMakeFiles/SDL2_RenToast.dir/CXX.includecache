@@ -57,6 +57,8 @@ cstdlib
 -
 stdlib.h
 -
+fstream
+-
 Game.h
 /Users/markduncan/Documents/Sites/RenToast2/src/Game.h
 Object.h

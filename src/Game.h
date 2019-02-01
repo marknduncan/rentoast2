@@ -191,6 +191,7 @@ private:
 	SDL_Surface* textSurface;
 
 	TTF_Font* _arcadeFont;
+	TTF_Font* _arcadeFontLarge;
 
 	SDL_Event Done;
 	Timer fps;
@@ -242,6 +243,7 @@ public:
 	void printLevel(int);
 	void printScore();
 	void printLives();
+	void printHighScore();
 
 };
 #endif
