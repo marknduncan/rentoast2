@@ -1,0 +1,12 @@
+{
+    "C_Cpp.configurationWarnings": "Disabled",
+    "files.associations": {
+        "iostream": "cpp",
+        "cstdlib": "cpp",
+        "string": "cpp",
+        "ctime": "cpp",
+        "vector": "cpp",
+        "new": "cpp",
+        "exception": "cpp"
+    }
+}
